@@ -73,6 +73,23 @@ Person.findOne({favoriteFoods:food},(err,data)=>{
 })
 };
 
+/*=========================
+FIND BY NAME AND UPDATE 
+==========================*/
+var findAndUpdate = function(personName, done) {
+  var ageToSet = 20;
+
+  Person.findOneAndUpdate(
+    {name: personName},
+    {$set: {age: ageToSet}},
+    {new: true},
+    (err, data) => {
+      if (err) return done(err, data);
+      return done(null, data);
+    }
+  );
+};
+
 /*============================================
 FIND THE PERSON THAT HAS THE GİVEN ID PARAMATER
 =============================================*/
@@ -84,3 +101,25 @@ var findPersonById = function(personId, done) {
     done(null,data)
   })
 };
+/*==============================================
+FIND AND MODEL WİTH AN ID AND UPDATE IT AND SAVE 
+================================================*/
+var findEditThenSave = function(personId, done) {
+  var foodToAdd = 'hamburger';
+Person.findById(personId,(err,data)=>{
+  data.favoriteFoods.push(foodToAdd);
+  data.save((err,data)=>{
+    if(err){
+     return done(err);
+    }
+    return done(null,data)
+  });
+  if(err){
+    return done(err);
+  }
+})
+};
+
+
+
+
