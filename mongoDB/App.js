@@ -120,6 +120,20 @@ Person.findById(personId,(err,data)=>{
 })
 };
 
+/*======================================================================
+Find people who like "burrito". Sort them alphabetically by name,
+ Limit the results to two documents, and hide their age.
+Chain `.find()`, `.sort()`, `.limit()`, `.select()`, and then `.exec()`,
+=======================================================================*/
+var queryChain = function(done) {
+  var foodToSearch = "burrito";
+  Person.find({favoriteFoods:foodToSearch}).sort("name").limit(2).select("-age").exec((err,data)=>{
+    err?done(err):done(null,data);
+  })
+  
+  
+};
+
 
 
 
