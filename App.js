@@ -71,6 +71,16 @@ Person.findOne({favoriteFoods:food},(err,data)=>{
   }
  return  done(null,data)
 })
-  
-  
+};
+
+/*============================================
+FIND THE PERSON THAT HAS THE GİVEN ID PARAMATER
+=============================================*/
+var findPersonById = function(personId, done) {
+  Person.findById(personId,(err,data)=>{
+    if(err){
+      return done(err);
+    }
+    done(null,data)
+  })
 };
