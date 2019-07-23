@@ -21,6 +21,7 @@ class MyForm extends React.Component {
         submit:this.state.input
       })
     }
+    COMPO
     render() {
       return (
         <div>
