@@ -46,7 +46,7 @@ class Presentational extends React.Component {
     this.setState({
       input: ''
     });
-    this.props.submitNewMessage(this.state.input)
+    this.props.submitNewMessage(this.state.input);
   }
   render() {
     return (
